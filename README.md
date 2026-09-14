@@ -132,17 +132,23 @@ The shop is intentionally not in the main navigation yet. When real products exi
 
 The repository has a CNAME file for bradleyminnich.com and a .nojekyll file for static asset paths.
 
+### Current DNS state (verified 2026-09-14)
+
+The new site is deployed and verified at https://bradthefunman.github.io/BradleyMinnich.com/. The public custom domain has not been switched yet: bradleyminnich.com still resolves to the existing Google Sites setup (ghs.googlehosted.com plus the current legacy A records), so the old public site remains live until the DNS cutover.
+
+This was left unchanged to avoid breaking the current domain without access to the DNS provider. Do not remove the old records until the replacement host is verified.
+
 Static deployment options:
 
 ### GitHub Pages
 
-1. Merge the site branch into main.
-2. In repository Settings → Pages, select GitHub Actions or deploy from main.
-3. Configure the custom domain as bradleyminnich.com.
-4. Keep the existing DNS provider in place until GitHub Pages verifies the domain.
-5. Confirm HTTPS and the www / non-www redirect behavior before changing any existing live DNS records.
+1. In repository Settings → Pages, confirm the GitHub Pages deployment has succeeded and set the custom domain to bradleyminnich.com.
+2. At the DNS provider, replace the existing Google Sites records with the exact GitHub Pages records shown by GitHub for this repository. Do not guess or hard-code IPs; GitHub may update them.
+3. Configure the www hostname exactly as GitHub instructs, enable HTTPS, and confirm the root / www redirect behavior.
+4. Re-test DNS with dig, then check https://bradleyminnich.com/ and every navigation route.
+5. If working server-side forms are required, deploy the same source to Cloudflare Pages before or alongside the DNS cutover; GitHub Pages serves the direct-email fallback but cannot execute functions/api/contact.js.
 
-GitHub Pages can serve the static site, but it cannot execute functions/api/contact.js. Forms will use the direct-email fallback until the same source is deployed to a host with serverless functions.
+GitHub Pages preview: https://bradthefunman.github.io/BradleyMinnich.com/
 
 ### Cloudflare Pages (recommended when forms must work)
 
