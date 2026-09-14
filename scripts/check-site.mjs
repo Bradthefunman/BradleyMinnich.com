@@ -48,8 +48,27 @@ for (const file of htmlFiles) {
   if (/TODO|lorem ipsum/i.test(source)) failures.push(`${file}: unfinished copy found`);
 }
 
+const homepage = fs.readFileSync(path.join(root, "index.html"), "utf8");
+for (const route of ["/work/", "/about/", "/collaborate/", "/sponsor/", "/contact/"]) {
+  if (!homepage.includes(`href="${route}"`)) failures.push(`index.html: missing navigation link ${route}`);
+}
+
+for (const [file, formType] of [["collaborate/index.html", "collaboration"], ["sponsor/index.html", "sponsorship"], ["contact/index.html", "general"]]) {
+  const source = fs.readFileSync(path.join(root, file), "utf8");
+  if (!source.includes('data-contact-form')) failures.push(`${file}: missing form hook`);
+  if (!source.includes('action="/api/contact"')) failures.push(`${file}: missing form action`);
+  if (!source.includes(`name="formType" value="${formType}"`)) failures.push(`${file}: wrong form type`);
+  for (const field of ["name", "email", "message", "honeypot"]) {
+    if (!source.includes(`name="${field}"`)) failures.push(`${file}: missing field ${field}`);
+  }
+}
+
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
 if (!packageJson.scripts?.build || !packageJson.scripts?.test) failures.push("package.json: build/test scripts missing");
+
+const functionSource = fs.readFileSync(path.join(root, "functions/api/contact.js"), "utf8");
+if (!functionSource.includes("RESEND_API_KEY") || !functionSource.includes("CONTACT_FROM_EMAIL")) failures.push("contact function: missing secret configuration");
+if (/sk_[a-z0-9]{16,}/i.test(functionSource)) failures.push("contact function: possible committed API key");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 for (const url of ["https://bradleyminnich.com/", "https://bradleyminnich.com/work/", "https://bradleyminnich.com/about/", "https://bradleyminnich.com/collaborate/", "https://bradleyminnich.com/sponsor/", "https://bradleyminnich.com/contact/"]) {
