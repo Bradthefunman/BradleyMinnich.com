@@ -134,32 +134,34 @@ The repository has a CNAME file for bradleyminnich.com and a .nojekyll file for 
 
 ### Current DNS state (verified 2026-09-14)
 
-The new site is deployed and verified at https://bradthefunman.github.io/BradleyMinnich.com/. The public custom domain has not been switched yet: bradleyminnich.com still resolves to the existing Google Sites setup (ghs.googlehosted.com plus the current legacy A records), so the old public site remains live until the DNS cutover.
+The custom domain is connected to GitHub Pages.
 
-This was left unchanged to avoid breaking the current domain without access to the DNS provider. Do not remove the old records until the replacement host is verified.
+- Apex A records: 185.199.108.153, 185.199.109.153, 185.199.110.153, and 185.199.111.153
+- www CNAME: bradthefunman.github.io
+- GitHub Pages custom-domain status: DNS check successful
+- Enforce HTTPS: enabled
+- www redirects to the canonical non-www domain
 
-Static deployment options:
+Live site: https://bradleyminnich.com/
 
 ### GitHub Pages
 
-1. In repository Settings → Pages, confirm the GitHub Pages deployment has succeeded and set the custom domain to bradleyminnich.com.
-2. At the DNS provider, replace the existing Google Sites records with the exact GitHub Pages records shown by GitHub for this repository. Do not guess or hard-code IPs; GitHub may update them.
-3. Configure the www hostname exactly as GitHub instructs, enable HTTPS, and confirm the root / www redirect behavior.
-4. Re-test DNS with dig, then check https://bradleyminnich.com/ and every navigation route.
-5. If working server-side forms are required, deploy the same source to Cloudflare Pages before or alongside the DNS cutover; GitHub Pages serves the direct-email fallback but cannot execute functions/api/contact.js.
+The site is deployed from the main branch and the custom domain is configured in repository Settings → Pages. Keep the root CNAME file and .nojekyll file in place when making future changes.
+
+GitHub Pages can serve the static site, but it cannot execute functions/api/contact.js. Forms use the direct-email fallback until the same source is deployed to a host with serverless functions and the required environment variables.
 
 GitHub Pages preview: https://bradthefunman.github.io/BradleyMinnich.com/
 
-### Cloudflare Pages (recommended when forms must work)
+### Cloudflare Pages (optional when forms must work)
 
 1. Connect this repository to Cloudflare Pages.
 2. Use npm run build as the build command and the repository root (.) as the output directory.
 3. Add the form environment variables above in the Pages project.
 4. Add bradleyminnich.com as the custom domain in Cloudflare Pages.
-5. Verify the preview deployment before changing any DNS records serving the current site.
+5. Verify the preview deployment before changing hosting or DNS.
 6. After the domain is live, test every form, HTTPS, the root domain, and the www behavior.
 
-Do not delete or change the existing live DNS / hosting records until the replacement is deployed and verified.
+Do not re-add Squarespace forwarding records; they would override the GitHub Pages connection.
 
 ## SEO and accessibility
 
