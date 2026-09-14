@@ -35,17 +35,21 @@ const emailIsValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const verifyTurnstile = async (token, request, secret) => {
   if (!secret) return true;
   if (!token) return false;
-  const form = new FormData();
-  form.append("secret", secret);
-  form.append("response", token);
-  const ip = request.headers.get("CF-Connecting-IP");
-  if (ip) form.append("remoteip", ip);
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    body: form
-  });
-  const result = await response.json();
-  return result.success === true;
+  try {
+    const form = new FormData();
+    form.append("secret", secret);
+    form.append("response", token);
+    const ip = request.headers.get("CF-Connecting-IP");
+    if (ip) form.append("remoteip", ip);
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: form
+    });
+    const result = await response.json();
+    return result.success === true;
+  } catch {
+    return false;
+  }
 };
 
 const fieldLines = (payload) => [
@@ -73,6 +77,10 @@ export async function onRequestPost({ request, env }) {
     payload = await request.json();
   } catch {
     return json({ message: "Please send the form as JSON." }, 400);
+  }
+
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    return json({ message: "Please send a valid form submission." }, 400);
   }
 
   const normalized = {};
