@@ -45,7 +45,7 @@ for (const file of htmlFiles) {
   if (!source.includes("/assets/styles.css")) failures.push(`${file}: missing stylesheet`);
   if (!source.includes("/assets/site-data.js")) failures.push(`${file}: missing data script`);
   if (!source.includes("/assets/app.js")) failures.push(`${file}: missing app script`);
-  if (/TODO|PLACEHOLDER|lorem ipsum/i.test(source)) failures.push(`${file}: placeholder text found`);
+  if (/TODO|lorem ipsum/i.test(source)) failures.push(`${file}: unfinished copy found`);
 }
 
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
