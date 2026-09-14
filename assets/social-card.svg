@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Bradley Minnich — Personal Headquarters</title>
+  <desc id="desc">Operations, businesses, media, software, land, and the projects in between.</desc>
+  <rect width="1200" height="630" fill="#f3efe7"/>
+  <rect x="0" y="0" width="395" height="630" fill="#11120f"/>
+  <rect x="48" y="48" width="74" height="74" fill="#d7ef54"/>
+  <text x="63" y="103" fill="#11120f" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800">BM</text>
+  <text x="48" y="260" fill="#f3efe7" font-family="Arial,Helvetica,sans-serif" font-size="62" font-weight="800" letter-spacing="-4">BRADLEY</text>
+  <text x="48" y="322" fill="#f3efe7" font-family="Arial,Helvetica,sans-serif" font-size="62" font-weight="800" letter-spacing="-4">MINNICH</text>
+  <text x="48" y="570" fill="#d7ef54" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" letter-spacing="3">PERSONAL HEADQUARTERS</text>
+  <text x="455" y="235" fill="#11120f" font-family="Georgia,serif" font-size="78" font-weight="700" letter-spacing="-3">I build across</text>
+  <text x="455" y="325" fill="#eb6a2a" font-family="Georgia,serif" font-size="78" font-weight="700" letter-spacing="-3">worlds.</text>
+  <line x1="460" y1="400" x2="1070" y2="400" stroke="#11120f" stroke-width="2"/>
+  <text x="460" y="455" fill="#67675e" font-family="Arial,Helvetica,sans-serif" font-size="24">Operations · businesses · media</text>
+  <text x="460" y="490" fill="#67675e" font-family="Arial,Helvetica,sans-serif" font-size="24">software · land · experiments</text>
+</svg>
