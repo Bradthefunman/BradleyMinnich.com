@@ -1,0 +1,13 @@
+{
+  "name": "bradleyminnich.com",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bradley Minnich personal headquarters",
+  "scripts": {
+    "build": "node scripts/check-site.mjs",
+    "test": "node scripts/check-site.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
