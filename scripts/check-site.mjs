@@ -65,6 +65,16 @@ for (const [file, formType] of [["collaborate/index.html", "collaboration"], ["s
   }
 }
 
+const shopPage = fs.readFileSync(path.join(root, "shop/index.html"), "utf8");
+for (const productUrl of [
+  "https://bradthefunman-shop.fourthwall.com/products/bradley-minnich-build-further-sweatshirt",
+  "https://bradthefunman-shop.fourthwall.com/products/bradley-minnich-portrait-tee",
+  "https://bradthefunman-shop.fourthwall.com/products/bradley-minnich-face-sweatshirt",
+  "https://bradthefunman-shop.fourthwall.com/products/bradley-minnich-face-tee"
+]) {
+  if (!shopPage.includes(productUrl)) failures.push(`shop/index.html: missing product link ${productUrl}`);
+}
+
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
 if (!packageJson.scripts?.build || !packageJson.scripts?.test) failures.push("package.json: build/test scripts missing");
 

@@ -15,7 +15,7 @@ The site is intentionally broader than a résumé, portfolio, influencer page, o
 - /shop/ — live made-to-order merch storefront
 - /404.html — branded not-found page
 
-The Shop route links to the live Fourthwall storefront, where products are made to order and fulfillment is handled outside the GitHub Pages site.
+The Shop route links to the live Fourthwall storefront, where four products are made to order: the Build Further sweatshirt, the existing tee, and new face-photo sweatshirt and tee variants. Fourthwall handles fulfillment outside the GitHub Pages site.
 
 ## Architecture
 
