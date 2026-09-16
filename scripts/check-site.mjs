@@ -82,7 +82,7 @@ for (const file of htmlFiles) {
   if (!source.includes(adsenseScriptNeedle)) failures.push(`${file}: missing AdSense script`);
 }
 const adsTxt = fs.readFileSync(path.join(root, "ads.txt"), "utf8");
-if (!adsTxt.includes("google.com, ca-pub-2976233413120261, DIRECT, f08c47fec0942fa0")) failures.push("ads.txt: missing AdSense publisher record");
+if (!adsTxt.includes("google.com, pub-2976233413120261, DIRECT, f08c47fec0942fa0")) failures.push("ads.txt: missing AdSense publisher record");
 
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
 if (!packageJson.scripts?.build || !packageJson.scripts?.test) failures.push("package.json: build/test scripts missing");
