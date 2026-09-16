@@ -20,7 +20,8 @@ const requiredFiles = [
   "sitemap.xml",
   "robots.txt",
   "CNAME",
-  "site.webmanifest"
+  "site.webmanifest",
+  "ads.txt"
 ];
 
 const failures = [];
@@ -74,6 +75,14 @@ for (const productUrl of [
 ]) {
   if (!shopPage.includes(productUrl)) failures.push(`shop/index.html: missing product link ${productUrl}`);
 }
+
+const adsenseScriptNeedle = "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2976233413120261";
+for (const file of htmlFiles) {
+  const source = fs.readFileSync(path.join(root, file), "utf8");
+  if (!source.includes(adsenseScriptNeedle)) failures.push(`${file}: missing AdSense script`);
+}
+const adsTxt = fs.readFileSync(path.join(root, "ads.txt"), "utf8");
+if (!adsTxt.includes("google.com, ca-pub-2976233413120261, DIRECT, f08c47fec0942fa0")) failures.push("ads.txt: missing AdSense publisher record");
 
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
 if (!packageJson.scripts?.build || !packageJson.scripts?.test) failures.push("package.json: build/test scripts missing");

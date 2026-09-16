@@ -32,6 +32,10 @@ This is a dependency-free static site with an optional Cloudflare Pages Function
 
 The public profile portrait is stored at assets/media/bradley-minnich.jpg and used on the homepage and About page. Keep personal imagery intentional, optimized, and paired with meaningful alt text. Verified claims should be added only when they are ready.
 
+## Advertising
+
+Google AdSense Auto ads are wired into every HTML page using the Bradley Minnich publisher account. The root ads.txt file identifies the authorized AdSense seller. Google still needs to complete site review before ads can serve, and ad placement remains controlled by AdSense.
+
 ## Run, build, and test
 
 No package installation is required.
