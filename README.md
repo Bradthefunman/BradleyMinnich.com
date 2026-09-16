@@ -28,7 +28,7 @@ This is a dependency-free static site with an optional Cloudflare Pages Function
 - assets/social-card.svg is the reusable Open Graph / X social card.
 - sitemap.xml, robots.txt, canonical tags, structured data, and page metadata are included for SEO.
 
-No personal photos or fabricated metrics are included. Add verified images and claims when they are ready.
+The public profile portrait is stored at assets/media/bradley-minnich.jpg and used on the homepage and About page. Keep personal imagery intentional, optimized, and paired with meaningful alt text. Verified claims should be added only when they are ready.
 
 ## Run, build, and test
 
@@ -72,7 +72,7 @@ When verified Bradley or project photos are available:
 4. Add the image to the relevant page or data object.
 5. Update assets/social-card.svg only if the social preview direction should change.
 
-The current design uses typography and layout instead of generic stock photography.
+The current design uses typography, layout, and Bradley’s supplied profile portrait instead of generic stock photography.
 
 ## Forms and email
 
