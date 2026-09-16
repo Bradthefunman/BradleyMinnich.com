@@ -12,9 +12,10 @@ The site is intentionally broader than a résumé, portfolio, influencer page, o
 - /collaborate/ — collaboration opportunities and inquiry form
 - /sponsor/ — sponsorship / partnership positioning and request form
 - /contact/ — general inquiries, recruiting, media, collaboration, and sponsorship routing
+- /shop/ — live made-to-order merch storefront
 - /404.html — branded not-found page
 
-The shop / merch navigation remains hidden until real products exist.
+The Shop route links to the live Fourthwall storefront, where products are made to order and fulfillment is handled outside the GitHub Pages site.
 
 ## Architecture
 
@@ -26,6 +27,7 @@ This is a dependency-free static site with an optional Cloudflare Pages Function
 - functions/api/contact.js validates and sends form submissions through Resend without exposing secrets client-side.
 - scripts/check-site.mjs is the build / test check used by GitHub Actions.
 - assets/social-card.svg is the reusable Open Graph / X social card.
+- shop/index.html is the editorial storefront bridge to the hosted Fourthwall catalog.
 - sitemap.xml, robots.txt, canonical tags, structured data, and page metadata are included for SEO.
 
 The public profile portrait is stored at assets/media/bradley-minnich.jpg and used on the homepage and About page. Keep personal imagery intentional, optimized, and paired with meaningful alt text. Verified claims should be added only when they are ready.
@@ -126,7 +128,12 @@ Supported reserved placements currently include home-featured and sponsor-featur
 
 ## Future shop / merch
 
-The shop is intentionally not in the main navigation yet. When real products exist, add a shop/ route and connect it to a print-on-demand or commerce provider without changing the project / content architecture.
+The shop is live at https://bradthefunman-shop.fourthwall.com/. The first drop includes:
+
+- Bradley Minnich Portrait Tee — https://bradthefunman-shop.fourthwall.com/products/bradley-minnich-portrait-tee
+- Bradley Minnich Build Further Sweatshirt — https://bradthefunman-shop.fourthwall.com/products/bradley-minnich-build-further-sweatshirt
+
+Fourthwall is the operational source of truth for product availability, checkout, fulfillment, shipping, customer support, and returns. The GitHub Pages site only maintains the Shop landing page and links, so product orders do not require website edits.
 
 ## Deployment and custom domain
 

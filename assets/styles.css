@@ -906,3 +906,19 @@ main { display: block; }
 @media (max-width: 620px) {
   .portrait-card { max-width: 100%; }
 }
+
+/* Shop */
+.shop-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.5rem; }
+.shop-card { background: var(--white); border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 30rem; padding: 1rem; }
+.shop-card h3 { font-size: clamp(1.8rem, 3vw, 3.3rem); letter-spacing: -.08em; line-height: .9; margin: .5rem 0 .8rem; max-width: 9ch; text-transform: uppercase; }
+.shop-card p:not(.eyebrow) { color: var(--muted); max-width: 28rem; }
+.shop-card .button { align-self: flex-start; margin-top: auto; }
+.shop-art { display: flex; min-height: 15rem; width: 100%; }
+.shop-art-logo { align-items: center; background: var(--ink); color: var(--paper); flex-direction: column; justify-content: center; }
+.shop-art-logo strong { color: var(--orange); font-size: clamp(5rem, 12vw, 9rem); letter-spacing: -.16em; line-height: .72; margin-right: .18em; }
+.shop-art-logo span { border-top: 1px solid var(--orange); font-size: .7rem; font-weight: 800; letter-spacing: .18em; line-height: 1.4; margin-top: 1.25rem; padding-top: .65rem; text-align: center; }
+.shop-art-photo { aspect-ratio: 1.3; object-fit: cover; }
+@media (max-width: 620px) {
+  .shop-grid { grid-template-columns: 1fr; }
+  .shop-card { min-height: 27rem; }
+}

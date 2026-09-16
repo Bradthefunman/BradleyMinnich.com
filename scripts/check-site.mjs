@@ -10,6 +10,7 @@ const requiredFiles = [
   "collaborate/index.html",
   "sponsor/index.html",
   "contact/index.html",
+  "shop/index.html",
   "404.html",
   "assets/styles.css",
   "assets/site-data.js",
@@ -34,6 +35,7 @@ const htmlFiles = [
   "collaborate/index.html",
   "sponsor/index.html",
   "contact/index.html",
+  "shop/index.html",
   "404.html"
 ];
 
@@ -49,7 +51,7 @@ for (const file of htmlFiles) {
 }
 
 const homepage = fs.readFileSync(path.join(root, "index.html"), "utf8");
-for (const route of ["work/", "about/", "collaborate/", "sponsor/", "contact/"]) {
+for (const route of ["work/", "about/", "collaborate/", "sponsor/", "shop/", "contact/"]) {
   if (!homepage.includes(`href="${route}"`)) failures.push(`index.html: missing navigation link ${route}`);
 }
 
@@ -71,7 +73,7 @@ if (!functionSource.includes("RESEND_API_KEY") || !functionSource.includes("CONT
 if (/sk_[a-z0-9]{16,}/i.test(functionSource)) failures.push("contact function: possible committed API key");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
-for (const url of ["https://bradleyminnich.com/", "https://bradleyminnich.com/work/", "https://bradleyminnich.com/about/", "https://bradleyminnich.com/collaborate/", "https://bradleyminnich.com/sponsor/", "https://bradleyminnich.com/contact/"]) {
+for (const url of ["https://bradleyminnich.com/", "https://bradleyminnich.com/work/", "https://bradleyminnich.com/about/", "https://bradleyminnich.com/collaborate/", "https://bradleyminnich.com/sponsor/", "https://bradleyminnich.com/shop/", "https://bradleyminnich.com/contact/"]) {
   if (!sitemap.includes(`<loc>${url}</loc>`)) failures.push(`sitemap.xml: missing ${url}`);
 }
 
